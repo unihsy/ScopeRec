@@ -1,0 +1,24 @@
+{
+  "dataset": "Amazon Reviews 2023",
+  "category": "Software",
+  "source_documentation": "https://amazon-reviews-2023.github.io/data_processing/0core.html",
+  "interaction_processing": "Official deduplicated 0-core ratings; no local k-core or rating filter",
+  "timestamp_unit": "milliseconds",
+  "metadata_text_fields": ["title", "features", "description"],
+  "sources": [
+    {
+      "name": "interactions",
+      "filename": "Software.csv.gz",
+      "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/0core/rating_only/Software.csv.gz",
+      "expected_bytes": 109118532,
+      "sha256": "11687bdbedc0bfd9bf86368465dcab40f2450d1ea8eabd3c830ba8b339edd9c0"
+    },
+    {
+      "name": "metadata",
+      "filename": "meta_Software.jsonl.gz",
+      "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Software.jsonl.gz",
+      "expected_bytes": 64165835,
+      "sha256": "b01e32d2784f1cdbcb57a0a405adc3c37755e77e2b104ce76ead69312a38cde1"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source": "https://arxiv.org/html/2603.14259v2#S5",
+  "table": "Table 1, Software, arXiv v2",
+  "note": "Transcribed reference values, not local experimental results; protocols differ",
+  "cold_fraction": 0.243,
+  "tiger": {
+    "overall": {"ndcg@10": 0.0353, "ndcg@20": 0.0451, "ndcg@50": 0.0604, "recall@10": 0.0719, "recall@20": 0.1111, "recall@50": 0.1882},
+    "cold": {"ndcg@10": 0.0005, "ndcg@20": 0.0005, "ndcg@50": 0.0013, "recall@10": 0.0013, "recall@20": 0.0013, "recall@50": 0.0054}
+  },
+  "genrecedit": {
+    "overall": {"ndcg@10": 0.0370, "ndcg@20": 0.0475, "ndcg@50": 0.0601, "recall@10": 0.0706, "recall@20": 0.1122, "recall@50": 0.1754},
+    "cold": {"ndcg@10": 0.0228, "ndcg@20": 0.0249, "ndcg@50": 0.0286, "recall@10": 0.0359, "recall@20": 0.0445, "recall@50": 0.0629}
+  }
+}

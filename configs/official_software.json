@@ -1,0 +1,47 @@
+{
+  "name": "genrecedit_released_software_v1",
+  "dataset": "Amazon Reviews 2023",
+  "category": "Software",
+  "alignment_target": "Released official code, with documented runtime fixes; not an exact paper-table reproduction",
+  "upstream_revision": "e6878d9c7c6e57479e840ccb8c045b11a2bd69b5",
+  "kcore": "5core",
+  "split": "timestamp_w_his",
+  "max_rows": 0.5,
+  "timestamp_boundaries_ms": [1628643414042, 1658002729837],
+  "history_items": 20,
+  "encoder": {
+    "model_id": "sentence-transformers/sentence-t5-base",
+    "revision": "fc5d4628481afbbaaacd7af6bb07cf9d3865f781",
+    "endpoint": "https://hf-mirror.com",
+    "batch_size": 128
+  },
+  "sid": {"dimensions": 128, "pca_whiten": true, "pca_fit": "all_catalog_items", "levels": 3, "bits": 8, "collision_capacity": 256, "collision_start": 1},
+  "model": {"d_model": 128, "d_ff": 1024, "num_layers": 6, "num_heads": 8, "d_kv": 64},
+  "training": {
+    "epochs": 10, "batch_size": 1024, "micro_batch_size": 128,
+    "learning_rate": 0.05, "weight_decay": 0.05, "warmup_steps": 10000,
+    "max_grad_norm": 1.0, "eval_interval": 2, "val_metric": "prefix_ndcg@10",
+    "checkpoint_rule": "last evaluated epoch, matching released unconditional save"
+  },
+  "seeds": [2024, 2025, 2026],
+  "beam_size": 50,
+  "genrecedit": {
+    "pos2layer": [0, 1, 2, 3], "v_lr": 0.5, "v_num_grad_steps": 30,
+    "v_weight_decay": 0.2, "z_vector_max": 8000,
+    "cov_lambda": 3000, "released_script_cov_lambda": 1000,
+    "batch_size": 256, "covariance_requests": 400000,
+    "neighbors": 10, "examples_per_item": 10
+  },
+  "scoperec": {
+    "variant": "ScopeRec-C output-suffix mixture on unmasked full-vocabulary paths",
+    "depth": 1, "alphas": [0.025, 0.05, 0.1, 0.2],
+    "temperatures": [0.025, 0.05], "confidence_thresholds": [0.5, 0.7],
+    "confidence_width": 0.05, "query_mode": "last",
+    "selection": "highest overall validation prefix NDCG@10, then cold prefix Recall@20"
+  },
+  "sources": [
+    {"name": "train", "filename": "Software.train.csv.gz", "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/timestamp_w_his/Software.train.csv.gz", "expected_bytes": 25007720},
+    {"name": "valid", "filename": "Software.valid.csv.gz", "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/timestamp_w_his/Software.valid.csv.gz", "expected_bytes": 1367820},
+    {"name": "test", "filename": "Software.test.csv.gz", "url": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/benchmark/5core/timestamp_w_his/Software.test.csv.gz", "expected_bytes": 834271}
+  ]
+}

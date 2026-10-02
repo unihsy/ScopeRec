@@ -1,0 +1,51 @@
+{
+  "name": "software_genrecedit_scoperec_v2",
+  "base_cutoff": "2018-01-01T00:00:00+00:00",
+  "windows": {
+    "validation": {
+      "arrival_start": "2018-01-01T00:00:00+00:00",
+      "edit_at": "2018-07-01T00:00:00+00:00",
+      "end": "2019-01-01T00:00:00+00:00"
+    },
+    "test": {
+      "arrival_start": "2020-01-01T00:00:00+00:00",
+      "edit_at": "2020-07-01T00:00:00+00:00",
+      "end": "2021-01-01T00:00:00+00:00"
+    }
+  },
+  "history_items": 20,
+  "max_train_requests": 300000,
+  "max_holdout_requests": 4096,
+  "max_eval_requests": 12000,
+  "sampling_seed": 20260930,
+  "encoder": {
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "endpoint": "https://hf-mirror.com",
+    "max_tokens": 256
+  },
+  "sid": {"dimensions": 128, "levels": 3, "bits": 6, "collision_capacity": 512},
+  "model": {"d_model": 128, "d_ff": 1024, "num_layers": 6, "num_heads": 8, "d_kv": 64},
+  "training": {"epochs": 8, "batch_size": 256, "learning_rate": 0.001},
+  "seeds": [17, 29, 43],
+  "beam_size": 50,
+  "adaptation": {
+    "depths": [1, 2, 3], "rank": 8, "steps": 300, "batch_size": 256,
+    "learning_rate": 0.01, "replay_weights": [0.2, 1.0, 5.0],
+    "neighbors": 5, "examples_per_item": 10, "replay_requests": 12000,
+    "few_shot_per_item": 2
+  },
+  "genrecedit": {
+    "upstream_revision": "e6878d9c7c6e57479e840ccb8c045b11a2bd69b5",
+    "pos2layer": [0, 1, 2, 3], "v_lr": 0.5, "v_num_grad_steps": 30,
+    "v_weight_decay": 0.2, "z_vector_max": 8000,
+    "cov_lambdas": [100, 1000, 10000, 100000],
+    "batch_size": 256, "covariance_requests": 12000
+  },
+  "selection": {
+    "tuning_requests": 4096,
+    "minimum_old_ndcg_ratio": 0.95,
+    "objective": "new_recall20_times_old_ndcg20_with_old_floor",
+    "new_final_window": "2020 Jul-Dec; no adaptation choices based on this window"
+  }
+}
