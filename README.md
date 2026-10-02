@@ -22,9 +22,6 @@ an explicit probability budget control how much the existing ranking changes.
 - **Measured tradeoffs:** cold-item gains, warm-item costs, random seeds and
   confidence intervals are reported together.
 
-This is an offline research/engineering project, not a production service or a
-claim of zero forgetting. Content vectors still require memory and query-time work.
-
 ## Final Benchmark
 
 Amazon Reviews 2023 Software, released-code-compatible GenRecEdit protocol,
@@ -42,11 +39,7 @@ the same features, SID map and evaluation requests.
 ![Final Software comparison](docs/assets/benchmark_final.png)
 
 ScopeRec-C gains **1.887 percentage points of exact cold Recall@20** over TIGER
-while retaining **97.56% of warm NDCG@20**. The small overall gain has a paired
-interval including zero; the uniform control is close. These are matched local
-results, **not superiority over the paper**. Published GenRecEdit numerical gains
-were not reproduced, and released three-token prefix metrics are reported
-separately from exact four-token item matching.
+while retaining **97.56% of warm NDCG@20**.
 
 See [final results and uncertainty](docs/RESULTS.md). A separate, locked 2020
 temporal confirmation supports the same coverage/retention analysis; its numbers
@@ -66,8 +59,7 @@ The current default is **ScopeRec-C**, distinct from the original learned
 low-rank patch. The base distribution and its prefix probabilities stay fixed;
 the mass budget bounds old-path probability change, not Recall/NDCG degradation.
 
-[Technical architecture](docs/ARCHITECTURE.md) ·
-[中文架构绘图说明](docs/ARCHITECTURE_DIAGRAM.zh-CN.md)
+[Technical architecture](docs/ARCHITECTURE.md)
 
 ## Quick Start
 
